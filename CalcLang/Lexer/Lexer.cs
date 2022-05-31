@@ -2,13 +2,13 @@
 
 public class Lexer
 {
-    private string remainingText;
-    private List<TokenDefinition> _tokenDefinitions;
-    private Token nextToken;
+    private string _remainingText;
+    private readonly List<TokenDefinition> _tokenDefinitions;
+    private Token _nextToken;
     
     public Lexer(string text)
     {
-        remainingText = text;
+        _remainingText = text;
         _tokenDefinitions = new List<TokenDefinition>();
         
         _tokenDefinitions.Add(new TokenDefinition(TokenType.Add, "^ADD"));
@@ -19,35 +19,35 @@ public class Lexer
         _tokenDefinitions.Add(new TokenDefinition(TokenType.Equals, "^="));
         _tokenDefinitions.Add(new TokenDefinition(TokenType.Variable, "^[A-Z]"));
 
-        nextToken = ParseNextToken();
+        _nextToken = ParseNextToken();
     }
 
     public Token NextToken()
     {
-        var tokenToReturn = nextToken;
-        nextToken = ParseNextToken();
+        var tokenToReturn = _nextToken;
+        _nextToken = ParseNextToken();
         return tokenToReturn;
     }
     
     public bool IsNextToken(TokenType tokenType)
     {
-        return nextToken.TokenType == tokenType;
+        return _nextToken.TokenType == tokenType;
     }
 
     private Token ParseNextToken()
     {
-        while (!string.IsNullOrWhiteSpace(remainingText))
+        while (!string.IsNullOrWhiteSpace(_remainingText))
         {
-            var match = FindMatch(remainingText);
+            var match = FindMatch(_remainingText);
             
             if (match.IsMatch)
             {
                 var token = new Token(match.TokenType, match.Value);
-                remainingText = match.RemainingText;
+                _remainingText = match.RemainingText;
                 return token;
             }
             
-            remainingText = remainingText.Substring(1);
+            _remainingText = _remainingText.Substring(1);
         }
 
         return new Token(TokenType.EndOfFile, string.Empty);
