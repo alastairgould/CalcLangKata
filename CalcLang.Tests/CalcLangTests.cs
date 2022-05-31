@@ -90,7 +90,7 @@ public class CalcLangTests
     }
     
     [Fact]
-    public void PrecedenceOperator()
+    public void NestedExpressions()
     {
         const string program = "ProcedanceOperator.calclang";
 
