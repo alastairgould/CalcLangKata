@@ -4,13 +4,8 @@ public class Program : Node
 {
     public List<Node> Statements { get; }
 
-    public Program()
+    public Program(List<Node> statements)
     {
-        Statements = new List<Node>();
-    }
-    
-    public void AddStatement(Node node)
-    {
-        this.Statements.Add(node);
+        Statements = statements;
     }
 }

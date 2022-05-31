@@ -15,34 +15,35 @@ public class Parser
     public Program Parse()
     {
         //If you want to look into this style of parsing, look into recursive descent on google
-        
-        var program = new Program();
 
+        var statements = new List<Node>();
+        
         // Stop parsing when end of file
         while (!_lexer.IsNextToken(TokenType.EndOfFile))
         {
-            Statement(program);
+            var statement = Statement();
+            statements.Add(statement);
         }
 
-        return program;
+        return new Program(statements);
     }
 
-    private void Statement(Program program)
+    private Node Statement()
     {
         if (_lexer.IsNextToken(TokenType.Variable))
         {
             //Must be an assignment statement of some kind, either a constant or some kind of expression. 
             //So handle parsing for assignments
-            var assignmentStatement = Assignment();
-            program.AddStatement(assignmentStatement);
+            return Assignment();
         }
 
         if (_lexer.IsNextToken(TokenType.Print))
         {
             // Must be a statement to print. So handle parsing for a print statement
-            var printStatement = Print();
-            program.AddStatement(printStatement);
+            return Print();
         }
+
+        throw new InvalidOperationException("Expected either assignment or a print statement");
     }
 
     private Node Assignment()
