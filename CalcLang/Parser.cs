@@ -35,19 +35,19 @@ public class Parser
         {
             //Must be an assignment statement of some kind, either a constant or some kind of expression. 
             //So handle parsing for assignments
-            return Assignment();
+            return AssignmentStatement();
         }
 
         if (_lexer.IsNextToken(TokenType.Print))
         {
             // Must be a statement to print. So handle parsing for a print statement
-            return Print();
+            return PrintStatement();
         }
 
         throw new InvalidOperationException("Expected either assignment or a print statement");
     }
 
-    private Node Assignment()
+    private Node AssignmentStatement()
     {
         //Parse the variable to assign to
         var variableToken = Accept(TokenType.Variable);
@@ -120,7 +120,7 @@ public class Parser
         return new Variable(token.Value);
     }
     
-    private Print Print()
+    private Print PrintStatement()
     {
         //Move past the print keyword
         Accept(TokenType.Print);
