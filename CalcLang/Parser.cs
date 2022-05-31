@@ -51,21 +51,21 @@ public class Parser
 
         if (_lexer.IsNextToken(TokenType.Integer))
         {
-            //Assignment the value from a constant
+            //If the next token is an integer we must be trying to assign a constant to the variable
             var constantToAssign = Constant();
             return new Assignment(variableToAssignTo, constantToAssign);
         }
         
         if (_lexer.IsNextToken(TokenType.Add))
         {
-            //Assignment the value from addition
+            //If the next token is add keyword we must be trying to assign the result of an addition
             var addExpression = Add();
             return new Assignment(variableToAssignTo, addExpression);
         }
         
         if (_lexer.IsNextToken(TokenType.Subtract))
         {
-            //Assignment the value from subtraction
+            //If the next token is the subtract keyword we must be trying to assign the result of an subtraction
             var subtractExpression = Subtract();
             return new Assignment(variableToAssignTo, subtractExpression);
         }
