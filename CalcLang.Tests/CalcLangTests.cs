@@ -103,11 +103,12 @@ public class CalcLangTests
     [InlineData(4, "X = 4")]
     [InlineData(5, "X = 15")]
     [InlineData(6, "X = 6")]
-    public void Conditional(int programInput, string output)
+    public void Conditional(int n, string output)
     {
+        //Good luck...
         const string program = "Conditional.calclang";
 
-        var programOutput = RunProgram(program, programInput);
+        var programOutput = RunProgram(program, n);
 
         Assert.Equal(output, programOutput);
     }
