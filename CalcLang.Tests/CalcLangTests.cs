@@ -24,7 +24,7 @@ public class CalcLangTests
     [InlineData(7, "X = 9")]
     public void AddN(int programInput, string output)
     {
-        // Hint: Will require a change in Interpreter.cs
+        // Hint: Will require a change in Interpreter.cs. Try looking for where add expressions are calculated
         const string program = "AddN.calclang";
         
         var programOutput = RunProgram(program, programInput);
@@ -40,7 +40,7 @@ public class CalcLangTests
     [InlineData(5, "X = 5")]
     public void Subtract(int programInput, string output)
     {
-        // Hint: Will require a change in Interpreter.cs
+        // Hint: Will require a change in Interpreter.cs.
         const string program = "Subtract.calclang";
         
         var programOutput = RunProgram(program, programInput);
