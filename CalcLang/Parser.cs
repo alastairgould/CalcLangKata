@@ -21,25 +21,30 @@ public class Parser
         // Stop parsing when end of file
         while (!_lexer.IsNextToken(TokenType.EndOfFile))
         {
-            if (_lexer.IsNextToken(TokenType.Variable))
-            {
-                //Must be an assignment statement of some kind, either a constant or some kind of expression. 
-                //So handle parsing for assignments
-                var assignmentStatement = Assignment();
-                program.AddStatement(assignmentStatement);
-            }
-
-            if (_lexer.IsNextToken(TokenType.Print))
-            {
-                // Must be a statement to print. So handle parsing for a print statement
-                var printStatement = Print();
-                program.AddStatement(printStatement);
-            }
+            ParseStatement(program);
         }
 
         return program;
     }
-    
+
+    private void ParseStatement(Program program)
+    {
+        if (_lexer.IsNextToken(TokenType.Variable))
+        {
+            //Must be an assignment statement of some kind, either a constant or some kind of expression. 
+            //So handle parsing for assignments
+            var assignmentStatement = Assignment();
+            program.AddStatement(assignmentStatement);
+        }
+
+        if (_lexer.IsNextToken(TokenType.Print))
+        {
+            // Must be a statement to print. So handle parsing for a print statement
+            var printStatement = Print();
+            program.AddStatement(printStatement);
+        }
+    }
+
     private Node Assignment()
     {
         //Parse the variable to assign to
