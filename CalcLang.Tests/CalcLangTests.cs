@@ -126,8 +126,8 @@ public class CalcLangTests
         var program = parser.Parse();
        
         //Interpret program
-        var interpreter = new Interpreter();
-        var programOutput = interpreter.Run(program);
+        var interpreter = new Interpreter(program);
+        var programOutput = interpreter.Run();
         
         return programOutput;
     }

@@ -4,17 +4,19 @@ using CalcLang.AbstractSyntaxTree;
 
 public class Interpreter
 {
+    private readonly Program _program;
     private readonly Dictionary<string, int> _variables;
     private string _terminalOutput = "";
 
-    public Interpreter()
+    public Interpreter(Program program)
     {
+        _program = program;
         _variables = new Dictionary<string, int>();
     }
 
-    public string Run(Program program)
+    public string Run()
     {
-        foreach (var statement in program.Statements)
+        foreach (var statement in _program.Statements)
         {
             HandleStatement(statement); 
         }
