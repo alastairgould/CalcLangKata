@@ -21,6 +21,7 @@ public class Parser
         // Stop parsing when end of file
         while (!_lexer.IsNextToken(TokenType.EndOfFile))
         {
+            //Parse a statement
             var statement = Statement();
             statements.Add(statement);
         }
