@@ -18,35 +18,35 @@ public class Interpreter
     {
         foreach (var statement in _program.Statements)
         {
-            HandleStatement(statement); 
+            RunStatement(statement); 
         }
 
         return _terminalOutput.Trim();
     }
 
-    private void HandleStatement(Node statement)
+    private void RunStatement(Node statement)
     {
         switch (statement)
         {
             case Assignment assignment:
-                HandleAssignmentStatement(assignment);
+                RunAssignmentStatement(assignment);
                 return;
             case Print print:
-                HandlePrintStatement(print);
+                RunPrintStatement(print);
                 return;
         }
 
         throw new InvalidOperationException("Tried to execute unsupported statement");
     }
 
-    private void HandleAssignmentStatement(Assignment statement)
+    private void RunAssignmentStatement(Assignment statement)
     {
         var valueExpression = statement.Value;
         var value = EvaluateExpression(valueExpression);
         _variables[statement.Variable.VariableName] = value;
     }
     
-    private void HandlePrintStatement(Print statement)
+    private void RunPrintStatement(Print statement)
     {
         var variableName = statement.Variable.VariableName;
         _terminalOutput = _terminalOutput + variableName + " = " + _variables[variableName] + Environment.NewLine;
