@@ -59,28 +59,28 @@ public class Parser
         if (_lexer.IsNextToken(TokenType.Integer))
         {
             //If the next token is an integer we must be trying to assign a constant to the variable
-            var constantToAssign = Constant();
+            var constantToAssign = ConstantExpression();
             return new Assignment(variableToAssignTo, constantToAssign);
         }
         
         if (_lexer.IsNextToken(TokenType.Add))
         {
             //If the next token is add keyword we must be trying to assign the result of an addition
-            var addExpression = Add();
+            var addExpression = AddExpression();
             return new Assignment(variableToAssignTo, addExpression);
         }
         
         if (_lexer.IsNextToken(TokenType.Subtract))
         {
             //If the next token is the subtract keyword we must be trying to assign the result of an subtraction
-            var subtractExpression = Subtract();
+            var subtractExpression = SubtractExpression();
             return new Assignment(variableToAssignTo, subtractExpression);
         }
 
         throw new InvalidOperationException("Expected either add keyword or constant");
     }
     
-    private Node Add()
+    private Node AddExpression()
     {
         //Move past the add keyword
         Accept(TokenType.Add);
@@ -94,7 +94,7 @@ public class Parser
         return new Add(firstParameter, secondParameter);
     }
 
-    private Node Subtract()
+    private Node SubtractExpression()
     {
         //Move past the subtract keyword
         Accept(TokenType.Subtract);
@@ -108,7 +108,7 @@ public class Parser
         return new Subtract(firstParameter, secondParameter);
     }
     
-    private Constant Constant()
+    private Constant ConstantExpression()
     {
         var token = Accept(TokenType.Integer);
         return new Constant(int.Parse(token.Value));
@@ -139,7 +139,7 @@ public class Parser
         
         if (_lexer.IsNextToken(TokenType.Integer))
         {
-            return Constant();
+            return ConstantExpression();
         }
 
         throw new InvalidOperationException("Expected either a constant or variable");
