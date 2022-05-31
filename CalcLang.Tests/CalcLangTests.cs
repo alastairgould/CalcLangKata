@@ -78,7 +78,6 @@ public class CalcLangTests
         Assert.Equal(output, programOutput);
     }
 
-
     [Fact]
     public void DivideByZero()
     {
