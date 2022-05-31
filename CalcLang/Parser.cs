@@ -21,13 +21,13 @@ public class Parser
         // Stop parsing when end of file
         while (!_lexer.IsNextToken(TokenType.EndOfFile))
         {
-            ParseStatement(program);
+            Statement(program);
         }
 
         return program;
     }
 
-    private void ParseStatement(Program program)
+    private void Statement(Program program)
     {
         if (_lexer.IsNextToken(TokenType.Variable))
         {
