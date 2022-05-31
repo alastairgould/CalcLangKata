@@ -22,12 +22,12 @@ public class CalcLangTests
     [InlineData(5, "X = 7")]
     [InlineData(6, "X = 8")]
     [InlineData(7, "X = 9")]
-    public void AddN(int n, string output)
+    public void AddN(int programInput, string output)
     {
         // Hint: Will require a change in Interpreter.cs
         const string program = "AddN.calclang";
         
-        var programOutput = RunProgram(program, n);
+        var programOutput = RunProgram(program, programInput);
 
         Assert.Equal(output, programOutput);
     }
@@ -38,12 +38,12 @@ public class CalcLangTests
     [InlineData(3, "X = 7")]
     [InlineData(4, "X = 6")]
     [InlineData(5, "X = 5")]
-    public void Subtract(int n, string output)
+    public void Subtract(int programInput, string output)
     {
         // Hint: Will require a change in Interpreter.cs
         const string program = "Subtract.calclang";
         
-        var programOutput = RunProgram(program, n);
+        var programOutput = RunProgram(program, programInput);
 
         Assert.Equal(output, programOutput);
     }
@@ -54,12 +54,12 @@ public class CalcLangTests
     [InlineData(3, "X = 30")]
     [InlineData(4, "X = 40")]
     [InlineData(5, "X = 50")]
-    public void Multiply(int n, string output)
+    public void Multiply(int programInput, string output)
     {
         // Hint: Will require a change in the parser, and interpreter. Token should already exist. abstract syntax tree node should already exist
         const string program = "Multiply.calclang";
         
-        var programOutput = RunProgram(program, n);
+        var programOutput = RunProgram(program, programInput);
 
         Assert.Equal(output, programOutput);
     }
@@ -68,12 +68,12 @@ public class CalcLangTests
     [InlineData(2, "X = 50")]
     [InlineData(4, "X = 25")]
     [InlineData(50, "X = 2")]
-    public void Divide(int n, string output)
+    public void Divide(int programInput, string output)
     {
         // Hint: Will require a change in the lexer, parser, abstract syntax tree and interpreter
         const string program = "Divide.calclang";
 
-        var programOutput = RunProgram(program, n);
+        var programOutput = RunProgram(program, programInput);
 
         Assert.Equal(output, programOutput);
     }
@@ -103,11 +103,11 @@ public class CalcLangTests
     [InlineData(4, "X = 4")]
     [InlineData(5, "X = 15")]
     [InlineData(6, "X = 6")]
-    public void Conditional(int n, string output)
+    public void Conditional(int programInput, string output)
     {
         const string program = "Conditional.calclang";
 
-        var programOutput = RunProgram(program, n);
+        var programOutput = RunProgram(program, programInput);
 
         Assert.Equal(output, programOutput);
     }
