@@ -1,0 +1,3 @@
+﻿X = 2
+X = ADD (MULTIPLY X 2) 1
+PRINT X

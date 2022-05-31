@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalcLang", "CalcLang\CalcLang.csproj", "{B485E53A-9C1F-4298-BBBF-5CFA3987EC58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalcLang.Tests", "CalcLang.Tests\CalcLang.Tests.csproj", "{06C0BFDD-B62B-4F76-9743-8E0FCB8DC7E7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B485E53A-9C1F-4298-BBBF-5CFA3987EC58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B485E53A-9C1F-4298-BBBF-5CFA3987EC58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B485E53A-9C1F-4298-BBBF-5CFA3987EC58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B485E53A-9C1F-4298-BBBF-5CFA3987EC58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06C0BFDD-B62B-4F76-9743-8E0FCB8DC7E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06C0BFDD-B62B-4F76-9743-8E0FCB8DC7E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06C0BFDD-B62B-4F76-9743-8E0FCB8DC7E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06C0BFDD-B62B-4F76-9743-8E0FCB8DC7E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

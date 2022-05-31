@@ -1,0 +1,4 @@
+﻿X = 2
+X = ADD X 1
+
+PRINT X
