@@ -24,7 +24,7 @@ public class Parser
             if (_lexer.IsNextToken(TokenType.Variable))
             {
                 //Must be an assignment statement of some kind, either a constant or some kind of expression. 
-                //So handle parsing print
+                //So handle parsing for assignments
                 var assignmentStatement = Assignment();
                 program.AddStatement(assignmentStatement);
             }
