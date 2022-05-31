@@ -75,6 +75,7 @@ public class Parser
     
     private Node Add()
     {
+        //Move past the add keyword
         Accept(TokenType.Add);
         
         //Grab the First parameter
@@ -88,6 +89,7 @@ public class Parser
 
     private Node Subtract()
     {
+        //Move past the subtract keyword
         Accept(TokenType.Subtract);
         
         //Grab the First parameter
@@ -113,7 +115,10 @@ public class Parser
     
     private Print Print()
     {
+        //Move past the print keyword
         Accept(TokenType.Print);
+        
+        //Parse the variable to print
         var variable = Variable();
         return new Print(variable);
     }
